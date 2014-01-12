@@ -1,0 +1,29 @@
+doctype html
+head
+    title
+        block title
+            site.title
+	load("fonts#4.0.3 /template/css/style.scss?format=css /template/css/basic.css")
+	block head
+
+body
+	#header
+		#nav
+			a(href="/") Home
+			a(href="/archive") Archive
+			a(href="/categories") Categories
+			if site.tags
+				a(href="/archive?use=tags") Tags
+			if has('links.md')
+				a(href="/links.md") Links
+			if has('about.md')
+				a(href="/about.md") About
+
+	#layout
+		block content
+
+	#footer
+		.powered_by
+			a(target='_blank', href='http://www.farbox.com/') Proudly Powered By FarBox.com
+			span ©2012-2015 Z.R.E.Y Inc.
+			a(href="/template") Clone Tempalte

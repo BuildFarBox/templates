@@ -1,0 +1,18 @@
+extends base
+
+block content
+	posts = get_data(type='post', limit=300, sort='desc')
+	if request.args.use == 'tags'
+		archive = group(posts, 'tags')
+	else
+		archive = group(posts, 'date:year', reverse=True)
+	ul.list_with_title
+		for key, posts in archive
+			li.listing_title= key
+			ul.listing
+				for post in posts
+					li.listing_item
+						span.date {{ post.date.format("%Y-%m-%d") }}
+						a(href=post.url, title=post.title)= post.title
+
+	include include.paginator

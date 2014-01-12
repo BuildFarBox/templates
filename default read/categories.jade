@@ -1,0 +1,27 @@
+extends base
+
+block title
+	| Categories
+
+
+block content
+
+	ul#categories
+		for category in categories
+			li
+				a(href="/category/{{category.path}}")
+					h3= category.title
+					span {{category.posts_count}} Posts
+
+
+	script(type="text/javascript")
+		function auto_margin(){
+			var e = document.getElementById('categories');
+			e.style.marginLeft = 0;
+			var width = document.width || document.body.clientWidth;
+			if (e && width > 302){
+				e.style.marginLeft = ( width% 306) /2 + 'px';
+			}
+		}
+		auto_margin();
+		window.onresize = auto_margin;
