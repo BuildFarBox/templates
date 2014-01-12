@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title= site.title
+        link(href="/template/style.scss?format=css", rel="stylesheet", type="text/css")
+    body
+        for post in posts
+            .post
+                if post.cover
+                    .cover
+                        img(src='{{post.cover}}?width=480')
+                .content= post.content(1000)
+                .title ——《{{post.title}}》
+        .pager
+            if pager.has_pre
+                a.pre(href= pager.pre_url) <
+            if pager.has_next
+                a.next(href= pager.next_url) >
+
+        .powered_by
+            a(href="http://www.farbox.com", target="_blank") Powered by FarBox.com
+            a(href="/template")  Clone Template
+
+
