@@ -6,9 +6,6 @@ html
     body
         for post in posts
             .post
-                if post.cover
-                    .cover
-                        img(src='{{post.cover}}?width=480')
                 .content= post.content(1000)
                 .title ——《{{post.title}}》
         .pager
