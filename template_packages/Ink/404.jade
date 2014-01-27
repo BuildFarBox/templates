@@ -1,0 +1,25 @@
+extends base
+block title
+	| 404 | {{site.title}}
+block content
+	.detail-post
+		h2 对不起，您访问的页面不存在。
+		.post_body
+			p 您可以尝试搜索：
+				.search-bar
+					input(type="text", id='search-bar-2', value="", onkeyup="if (event.keyCode == 13) search_in_page();")
+					a(href="javascript:search_in_page()")
+						img(src="/template/img/search.png", alt="search icon")
+		.pager
+			a.pre(href='/') 返回首页
+			a.next.unavailable(href='http://doc.farbox.com', target=='_blank') 帮助文档
+
+	script(type="text/javascript")
+		function search_in_page(){
+            if (document.getElementById('search-bar-2').value){
+                location.href='http://'+location.host+'?s='+document.getElementById('search-bar-2').value
+            }
+            else{
+                return false;
+            }
+        }

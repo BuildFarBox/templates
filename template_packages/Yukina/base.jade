@@ -1,0 +1,23 @@
+html
+	head
+		load('/template/css/basic.css /template/css/style.css')
+		title
+			block title
+				site.title
+		meta(name="description", content=site.raw_content)
+		meta(name="template original author", content='imzoke')
+	body
+		#wrapper.site
+			.site-header
+				header#masthead.banner
+					h1.site-title
+						a(href="/")= site.configs.author or site.title
+					p.site-description= site.configs.subtitle
+			#main.site-main
+				#primary.content-area
+					#content.site-content(role="main")
+						block content
+
+					#footer
+						span Powered by
+						a(href='http://www.farbox.com') FarBox

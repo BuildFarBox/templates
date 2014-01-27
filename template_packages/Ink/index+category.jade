@@ -1,0 +1,21 @@
+extends base
+{% from "mixins" import make_posts_list %}
+block title
+	if request.path == '/'
+		{{ site.title }}
+	else
+		{{ category.title or '分类' }} | {{ site.title }}
+
+block content
+	if request.path == '/' or request.path not in ['/category', '/category/']
+		+set_per_page(10)
+		+make_posts_list()
+	else
+		ul#categories
+			for category in get_data(type='folder', level=1, min_posts_count=1)
+				li
+					a(href='/category/{{category.path}}')
+						h3= category.title
+						span
+							| {{ category.posts_count }} 篇文章
+

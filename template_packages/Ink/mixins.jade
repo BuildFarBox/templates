@@ -1,0 +1,52 @@
+
+mixin get_url(post, title='', class='', dom_title='')
+	if not title
+		title = post.title
+	if not post
+		a(href='#', title=dom_title or title, class=class)= title
+	else
+		if site.configs.post_url_format == 'no_prefix'
+			a(href='/{{post.url_path}}', title=dom_title or title, class=class)= title
+		else
+			a(href='/post/{{post.url_path}}', title=dom_title or title, class=class)= title
+
+
+mixin make_paginator()
+	if pager.has_pre or pager.has_next
+		div.clear
+		.pager
+			if pager.has_pre
+				a.pre(href=pager.pre_page_url) 上一页
+			else
+				span.pre.unavailable 已是最新一页
+			if pager.has_next
+				a.next(href=pager.next_page_url) 下一页
+			else
+				span.next.unavailable 已是最后一页
+
+
+mixin make_posts_list(_posts=None)
+	if _posts
+		posts = _posts
+	.posts
+		for post in posts
+			.post
+				h2.title= get_url(post, post.title)
+				.info
+					span.date= post.date.format('%Y.%m.%d')
+					|
+					span.visitors
+						| {{post.visits}}次阅读
+
+					path_parts = post.full_path.split('/')
+					if path_parts.length > 2
+						category_path = path_parts[1]
+						a(href="/category/{{category_path}}")= category_path
+
+					if post.tags
+						|
+						span.tags
+							for tag in post.tags
+								a(href="/tags/{{tag}}")= tag
+	{{ make_paginator() }}
+

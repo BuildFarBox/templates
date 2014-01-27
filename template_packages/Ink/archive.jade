@@ -1,0 +1,19 @@
+extends base
+{% from "mixins" import make_paginator, get_url %}
+
+block title
+	| 归档 | {{ site.title }}
+
+block content
+	ul.list_with_title
+		for year, posts in get_data(type='post', sort='desc', limit=300).group('-date:year')
+			li.listing_title= year
+			ul.listing
+				for post in posts
+					li.listing-item
+						span.date
+							| {{ post.visits or 0 }} | {{ post.date.format("%m.%d") }}
+						+get_url(post)
+
+	+make_paginator()
+

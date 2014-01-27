@@ -1,0 +1,58 @@
+html(lang="zh-cn")
+	head
+		meta(http-equiv="content-type", content="text/html; charset=utf-8")
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black-translucent", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		meta(name="description", content="")
+		meta(name="keywords", content="")
+		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
+		load("pure, jquery#1.10.2, /template/css/basic.css, /template/css/style.scss")
+
+		if not has('favicon.icon')
+			link(rel="shortcut icon", href="/template/favicon.ico")
+
+		title
+			block title
+				site.title
+
+	body
+		#layout.pure-g-r
+			.sidebar.pure-u
+				#avatar
+					a(href="/")
+						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="返回首页")
+				h1.site_name
+					a(href="/")
+						img(src=site.configs.name, alt=site.title)
+				#switch
+					img(src="/template/img/menu.png", alt="menu icon")
+				ul.nav
+					li#about= a_with_selected('/about', '关于')
+					li#category= a_with_selected('/category', '分类')
+					if site.tags
+						li#tags= a_with_selected('/tags', '标签')
+					li#archive= a_with_selected('/archive', '归档')
+					li#sub= a_with_selected('/subscribe', '订阅')
+					li#search
+					 	a(href="#") 搜索
+					li#btt
+						a(href="#main")
+				.search-bar
+					input#search-bar(type='text', value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+					a(href="javascript:search()")
+						img(src="/template/img/search.png", alt="search icon")
+
+			.content_body.pure-u-1
+				#main
+					block content
+				#footer
+					| Powered by
+					a(href='http://www.farbox.com') FarBox
+					| . &#169;2012-2015 Z.R.E.Y Inc. Theme
+					a(href="http://blog.cyanchen.com/farbox-theme-ink") Ink
+					|  designed by
+					a(href='http://cyanchen.com/') Cyan Chen
+					|.
+		load("/template/js/scripts.js")

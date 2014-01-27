@@ -1,0 +1,13 @@
+extends base
+block title
+	post.title
+block content
+	article.post
+		header.entry-header
+			h2.entry-title= post.title
+			.entry-meta Posted on
+				time.entry-date(datetime=post.date.isoformat())= post.date.format('%B %d, %Y')
+		.entry-content= post.content
+		footer.entry-footer
+
+	include include/comments

@@ -1,0 +1,74 @@
+extends base
+{% from "mixins" import get_url %}
+
+is_index = request.path in ['/about', '/subscribe']
+
+block title
+	| {{ title if is_index else get_data(url_path=request.path).title }}
+
+
+block content
+	.post.detail-post
+		if is_index
+			if request.path == '/about'
+				h2.title 关于
+				.post_body= site.content
+			else
+				h2.title 订阅
+				.post_body= site.configs.subscribe
+			.pager
+				a.pre(href="/category") 分类
+				a.next(href="/tags") 标签
+		else
+			// for detail page
+			if site.configs.post_url_format == 'no_prefix'
+				post = get_data(url_path=request.path)
+				if post
+					add_doc_actions(post)
+				else
+					raise_404
+			elif not request.path.startswith('/post/')
+				raise_404
+
+			h2.title= post.title
+			.info
+				span.date= post.date.format('%Y.%m.%d %H:%M %a')
+				|
+				span.visitors
+				| {{post.visits}}次阅读
+				|
+
+				path_parts = post.full_path.split('/')
+				if path_parts.length > 2
+					category_path = path_parts[1]
+					a(href="/category/{{category_path}}")= category_path
+
+				if post.tags
+					span.tags
+						for tag in post.tags
+							a(href="/tags/{{tag}}")= tag
+
+				|
+				span.permalink= get_url(post, '固定链接')
+				|
+				span.source
+					a(href="?action=show_raw", target="_blank") 源码
+
+			.post_body= post.content
+
+
+			.other_posts.pager
+				pre_one = get_connected_one(post, position='<')
+				next_one = get_connected_one(post, position='>')
+				if pre_one
+					| {{ get_url(pre_one, class='pre', dom_title='新一篇') }}
+				else
+					span.pre.unavailable 已是最新一篇
+				if next_one
+					| {{ get_url(next_one, class='next', dom_title='旧一篇') }}
+				elif pre_one
+					span.next.unavailable 已是最后一篇
+
+			comments = get_comments(post)
+			comment_allowed = is_comment_allowed(post)
+			include include.comments

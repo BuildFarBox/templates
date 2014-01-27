@@ -1,0 +1,26 @@
+extends base
+
+block content
+	for post in posts
+		article.post
+			header.entry-header
+				h2.entry-title
+					a(href=post.url)= post.title
+				.entry-meta Posted on
+					time.entry-date(datetime=post.date.isoformat())= post.date.format('%B %d, %Y')
+			.entry-content= post.content(250)
+				p
+					a(rel="nofollow", href=post.url) Keep reading...
+			footer.entry-footer
+	//paginator
+	if paginator.has_pre or paginator.has_next
+		nav#nav-below.navigation-paging(role="navigation")
+			if paginator.has_next
+				.nav-previous
+					a(href=paginator.next_page_url)
+						span.meta-nav ←
+						| Older posts
+			if paginator.has_pre
+				.nav-next
+					a(href=paginator.pre_page_url) Newer posts
+						span.meta-nav →

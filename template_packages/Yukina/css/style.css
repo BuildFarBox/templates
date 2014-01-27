@@ -1,0 +1,481 @@
+
+/* Fonts */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url("/template/css/roboto-300.woff") format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url("/template/css/roboto-700.woff") format('woff');
+}
+
+
+/* Links */
+a {
+    color: royalblue;
+}
+a:visited {
+    color: purple;
+}
+a:hover,
+a:focus,
+a:active {
+    color: midnightblue;
+}
+
+
+
+/* Alignment */
+.alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.5em;
+}
+.alignright {
+    display: inline;
+    float: right;
+    margin-left: 1.5em;
+}
+.aligncenter {
+    clear: both;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar */
+}
+
+/* Clearing */
+.clear:before,
+.clear:after,
+[class*="content"]:before,
+[class*="content"]:after,
+[class*="site"]:before,
+[class*="site"]:after {
+    content: '';
+    display: table;
+}
+
+.clear:after,
+[class*="content"]:after,
+[class*="site"]:after {
+    clear: both;
+}
+
+
+/* =Navigation NOT USED IN RIGHTER
+----------------------------------------------- */
+
+.site-content [class*="navigation"] {
+    margin: 0 0 1.5em;
+    overflow: hidden;
+}
+[class*="navigation"] .nav-previous {
+    float: left;
+    width: 50%;
+}
+[class*="navigation"] .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+
+
+
+/********** SPECIFIC STYLES
+----------------------------------------------- **********/
+
+
+/***** MAIN & TYPOGRAPHY *****/
+
+body {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    color: #666;
+    font-size:16px;
+    line-height: 2.1;
+}
+
+.entry-content a, .entry-content a:visited {
+    color: #6b8bc1;
+    text-decoration: none;
+}
+
+.entry-content a:hover, .entry-content a:visited:hover, .entry-content a:focus, .entry-content a:active {
+    color: #666666;
+    text-decoration: none;
+    opacity: 1;
+    border: none;
+}
+
+
+
+
+
+ul p, ol p{
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 28px;
+    font-size: 2.8rem;
+    color: #444;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: #666;
+    font-size: 17px;
+    font-size: 1.7rem;
+}
+
+
+/***** SIDE HEADER AREA *****/
+
+.site-header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    max-width: 450px;
+    background-color: #6b8bc1;
+    color: #F4F9F6;
+    z-index: 100;
+}
+
+header#masthead {
+    bottom: 0;
+    padding: 0 50px 50px 50px;
+    position: absolute;
+}
+
+header#masthead h1 {
+    padding: 0 0 10px 0;
+}
+
+header#masthead h1 a {
+    position: relative;
+    color: #F4F9F6;
+    text-decoration: none;
+    font-size: 40px;
+    font-size: 4.0rem;
+    line-height: 1.1;
+}
+header#masthead h1 a:hover { opacity: 0.9; }
+
+header#masthead h2 {
+    color: #F4F9F6;
+    font-weight: 300;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+
+/***** MAIN CONTENT & ARTICLES *****/
+
+.site-main {
+    background: #F4F9F6;
+}
+
+article h1.entry-title a, article h2.entry-title a {
+    color: #444444;
+    text-decoration: none;
+}
+
+article h1.entry-title a:visited, article h2.entry-title a:visited {
+    color: #444444;
+    text-decoration: none;
+}
+
+article h1.entry-title a:hover, article h2.entry-title a:hover {
+    color: #666666;
+    text-decoration: none;
+    opacity: 1;
+}
+
+article h1.entry-title a:visited:hover, article h2.entry-title a:visited:hover {
+    color: #666666;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.content-area {
+    display: block;
+    position: absolute;
+    left: 30%;
+    top: 0;
+    right: 0;
+    overflow: auto;
+    color: #666;
+}
+
+#primary {
+    display: block;
+    position: absolute;
+    padding: 30px 85px 50px 85px;
+    max-width: 1000px;
+}
+
+#footer{
+    text-align: center;
+    font-size: 0.7em;
+    margin-top: 30px;
+}
+
+#footer a{
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+article {
+    padding: 25px 0;
+}
+
+article h1.entry-title, article h2.entry-title {
+    border-bottom: 1px solid #F1F1F1;
+    border-top: 1px solid #F1F1F1;
+    margin-bottom: 15px;
+    padding: 15px 0 15px 0;
+    font-size: 28px;
+    font-size: 2.8rem;
+}
+.single article h1.entry-title {
+    border-bottom: 1px solid #F1F1F1;
+    border-top: none;
+    margin-bottom: 20px;
+    padding: 15px 0 15px 0;
+    font-size: 3em;
+}
+
+#primary .entry-meta, #primary .entry-meta a {
+    padding: 0;
+    color: #999999;
+}
+.entry-meta a:hover {
+    color: #999999;
+}
+
+article .entry-meta a, article .entry-meta a:visited {
+    color: #999;
+    text-decoration: none;
+}
+
+.entry-content, .entry-summary {
+    margin: 1.5em 0 0 0;
+}
+
+
+#nav-below a, #nav-below a:visited {
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #999999;
+    text-decoration: none;
+}
+#nav-below a:hover { color: #444; }
+
+
+
+a.keep-reading {
+    color: #6b8bc1;
+    text-decoration: none;
+    border: none;
+}
+
+a.keep-reading:visited {
+    color: #6b8bc1;
+    text-decoration: none;
+    border: none;
+}
+
+a.keep-reading:hover {
+    color: #666666;
+    text-decoration: none;
+    opacity: 1;
+    border: none;
+}
+
+a.keep-reading:visited:hover {
+    color: #666666;
+    text-decoration: none;
+    opacity: 1;
+    border: none;
+}
+
+footer.entry-footer {
+    margin-top: 10px;
+}
+
+
+/***** YUKINA FOOTER IS HIDDEN *****/
+
+.site-footer {
+    display: none;
+}
+
+footer#colophon {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    top: 40px;
+    color: #F4F9F6;
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+
+footer#colophon a {
+    color: #F4F9F6;
+    text-decoration: none;
+}
+
+/***** YUKINA OTHER STYLES *****/
+
+blockquote {
+    border-left: 5px solid #F1F1F1;
+    padding-left: 25px;
+    color: #999;
+}
+
+
+
+
+
+/********** YUKINA MOBILE SPECIFIC STYLES
+----------------------------------------------- **********/
+
+@media screen and (max-width: 900px) {
+
+    /***** YUKINA MOBILE TITLE HEADER AREA *****/
+
+    .site-header {
+        position: relative;
+        display: block;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        background-color: #6b8bc1;
+        color: #F4F9F6;
+        z-index: 100;
+    }
+
+    header#masthead {
+        bottom: 0;
+        padding: 15% 8%;
+        position: relative;
+        text-align: center;
+    }
+
+    header#masthead h1 {
+        padding: 0 0 10px 0;
+    }
+
+    header#masthead h1 a {
+        position: relative;
+        color: #F4F9F6;
+        text-decoration: none;
+        font-size: 40px;
+        font-size: 4.0rem;
+        line-height: 1.1;
+    }
+    header#masthead h1 a:hover { opacity: 0.9; }
+
+    header#masthead p {
+        color: #F4F9F6;
+    }
+
+    /***** YUKINA MOBILE MAIN CONTENT & ARTICLES *****/
+
+    .site-main {
+        display: block;
+        position: relative;
+        background: #F4F9F6;
+        width: 100%;
+    }
+
+    .content-area h1 {
+        color: #444;
+    }
+
+    .content-area {
+        display: inline-block;
+        position: relative;
+        overflow: auto;
+        color: #666;
+        left: 0;
+    }
+
+    #primary {
+        display: block;
+        position: absolute;
+        padding: 40px 40px 40px 40px;
+    }
+
+    article {
+        padding: 50px 0 0 0;
+    }
+
+    article h1 {
+        padding: 0 0 15px 0;
+    }
+
+    article h1 a {
+        position: relative;
+        text-decoration: none;
+        color: #444;
+    }
+    article h1 a:hover { opacity: 0.9; }
+    article h1 a:visited { color: #444; }
+
+    article .entry-meta {
+        padding: 0;
+    }
+
+    article .entry-meta a, article .entry-meta a:visited {
+        color: #999;
+        text-decoration: none;
+    }
+
+
+    .navigation-post a {
+        color: #999;
+        text-decoration: none;
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
+}
+
+::selection { background: #999; color: #F4F9F6;}
+
