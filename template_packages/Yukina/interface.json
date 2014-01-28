@@ -47,6 +47,12 @@
                         "parts_per_line": 3,
                         "parts":[
                             {
+                                "key": "posts_per_page",
+                                "title": "Posts per Page",
+                                "title_zh_cn": "每页显示日志数",
+                                "default_value": 3
+                            },
+                            {
                                 "key": "post_content_type",
                                 "title": "Post Content Type",
                                 "title_zh_cn": "正文格式",

@@ -161,6 +161,10 @@ h2, h3, h4, h5, h6 {
     font-size: 1.7rem;
 }
 
+h2{
+    font-size: 20px;
+    font-size: 2.0rem;
+}
 
 /***** SIDE HEADER AREA *****/
 
@@ -376,10 +380,10 @@ blockquote {
 /********** YUKINA MOBILE SPECIFIC STYLES
 ----------------------------------------------- **********/
 
-@media screen and (max-width: 900px) {
 
-    /***** YUKINA MOBILE TITLE HEADER AREA *****/
 
+/***** YUKINA MOBILE TITLE HEADER AREA *****/
+@media screen and (max-width: 900px){
     .site-header {
         position: relative;
         display: block;
@@ -476,6 +480,112 @@ blockquote {
         font-size: 1.4rem;
     }
 }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape){
+    .site-header {
+        position: relative;
+        display: block;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        background-color: #6b8bc1;
+        color: #F4F9F6;
+        z-index: 100;
+    }
+
+    header#masthead {
+        bottom: 0;
+        padding: 15% 8%;
+        position: relative;
+        text-align: center;
+    }
+
+    header#masthead h1 {
+        padding: 0 0 10px 0;
+    }
+
+    header#masthead h1 a {
+        position: relative;
+        color: #F4F9F6;
+        text-decoration: none;
+        font-size: 40px;
+        font-size: 4.0rem;
+        line-height: 1.1;
+    }
+    header#masthead h1 a:hover { opacity: 0.9; }
+
+    header#masthead p {
+        color: #F4F9F6;
+    }
+
+    /***** YUKINA MOBILE MAIN CONTENT & ARTICLES *****/
+
+    .site-main {
+        display: block;
+        position: relative;
+        background: #F4F9F6;
+        width: 100%;
+    }
+
+    .content-area h1 {
+        color: #444;
+    }
+
+    .content-area {
+        display: inline-block;
+        position: relative;
+        overflow: auto;
+        color: #666;
+        left: 0;
+    }
+
+    #primary {
+        display: block;
+        position: absolute;
+        padding: 40px 40px 40px 40px;
+    }
+
+    article {
+        padding: 50px 0 0 0;
+    }
+
+    article h1 {
+        padding: 0 0 15px 0;
+    }
+
+    article h1 a {
+        position: relative;
+        text-decoration: none;
+        color: #444;
+    }
+    article h1 a:hover { opacity: 0.9; }
+    article h1 a:visited { color: #444; }
+
+    article .entry-meta {
+        padding: 0;
+    }
+
+    article .entry-meta a, article .entry-meta a:visited {
+        color: #999;
+        text-decoration: none;
+    }
+
+
+    .navigation-post a {
+        color: #999;
+        text-decoration: none;
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    #primary {
+        padding: 20px;
+    }
+}
+
 
 ::selection { background: #999; color: #F4F9F6;}
 
