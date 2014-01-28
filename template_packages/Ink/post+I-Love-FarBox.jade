@@ -22,11 +22,7 @@ block content
 		else
 			// for detail page
 			if site.configs.post_url_format == 'no_prefix'
-				post = get_data(url_path=request.path)
-				if post
-					add_doc_actions(post)
-				else
-					raise_404
+				{{ url_without_prefix }}
 			elif not request.path.startswith('/post/')
 				raise_404
 
@@ -69,6 +65,4 @@ block content
 				elif pre_one
 					span.next.unavailable 已是最后一篇
 
-			comments = get_comments(post)
-			comment_allowed = is_comment_allowed(post)
 			include include.comments
