@@ -417,6 +417,7 @@ code{
 #fb_comments {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 #fb_comments h1{

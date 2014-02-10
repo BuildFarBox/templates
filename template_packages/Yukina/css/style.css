@@ -274,6 +274,7 @@ article h1.entry-title, article h2.entry-title {
     border-top: 1px solid #F1F1F1;
     margin-bottom: 15px;
     padding: 15px 0 15px 0;
+    color: #333;
     font-size: 28px;
     font-size: 2.8rem;
 }

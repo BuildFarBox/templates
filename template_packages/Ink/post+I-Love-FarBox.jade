@@ -22,7 +22,11 @@ block content
 		else
 			// for detail page
 			if site.configs.post_url_format == 'no_prefix'
-				{{ url_without_prefix }}
+				post = get_data(type='post', url_path=request.path, limit=1, with_path=False)
+				if not post
+					raise_404
+				else
+					add_doc_actions(post)
 			elif not request.path.startswith('/post/')
 				raise_404
 
@@ -32,14 +36,14 @@ block content
 				|
 				span.visitors
 				| {{post.visits}}次阅读
-				|
-
+				
 				path_parts = post.full_path.split('/')
 				if path_parts.length > 2
 					category_path = path_parts[1]
 					a(href="/category/{{category_path}}")= category_path
 
 				if post.tags
+					|
 					span.tags
 						for tag in post.tags
 							a(href="/tags/{{tag}}")= tag
