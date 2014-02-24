@@ -3,18 +3,26 @@ extends base
 
 is_index = request.path in ['/about', '/subscribe']
 
+if is_index
+	if request.path == '/about'
+		title = '关于'
+	else
+		title = '订阅'
+
 block title
-	| {{ title if is_index else get_data(url_path=request.path).title }}
+	if site.configs.post_url_format == 'no_prefix'
+		post = get_data(type='post', url_path=request.path, limit=1, with_path=False)
+	| {{ title if is_index else post.title}}
 
 
 block content
 	.post.detail-post
 		if is_index
 			if request.path == '/about'
-				h2.title 关于
+				h2.title= title
 				.post_body= site.content
 			else
-				h2.title 订阅
+				h2.title= title
 				.post_body= site.configs.subscribe
 			.pager
 				a.pre(href="/category") 分类
