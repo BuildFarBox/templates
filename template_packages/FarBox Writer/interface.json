@@ -1,0 +1,110 @@
+[
+    {
+        "title": "Site",
+        "title_zh_cn": "网站设置",
+        "auto_extends": true,
+        "groups": [
+            {
+                "title": "Site Info",
+                "title_zh_cn": "网站信息",
+                "cells": [
+                    {
+                        "parts_per_line": 2,
+                        "parts": [
+                            {
+                                "key": "title",
+                                "title": "Site Title",
+                                "title_zh_cn": "网站标题",
+                                "default_value": "My Site",
+                                "model": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "parts_per_line": 1,
+                        "parts":[
+                            {
+                                "title": "Site Description",
+                                "title_zh_cn": "网站描述",
+                                "key": "raw_content",
+                                "model":"textarea"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Contents Display",
+                "title_zh_cn": "内容显示",
+                "cells":[
+                    {
+                        "parts_per_line": 3,
+                        "parts":[
+                            {
+                                "key": "posts_per_page",
+                                "title": "Posts per Page",
+                                "title_zh_cn": "每页显示日志数",
+                                "default_value": 3
+                            },
+                            {
+                                "key": "post_content_type",
+                                "title": "Post Content Type",
+                                "title_zh_cn": "正文格式",
+                                "model": "select",
+                                "default_value": "markdown",
+                                "options": [
+                                    {
+                                        "value": "markdown",
+                                        "title": "Markdown"
+                                    },
+                                    {
+                                        "value": "plain",
+                                        "title": "Plain Text with Images"
+                                    }
+                                ],
+                                "options_zh_cn": [
+                                    {
+                                        "value": "markdown",
+                                        "title": "Markdown"
+                                    },
+                                    {
+                                        "value": "plain",
+                                        "title": "普通文本+图片"
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "post_paragraph_indent",
+                                "title": "Paragraph Text Indent",
+                                "title_zh_cn": "段落首行缩进",
+                                "model": "select",
+                                "default_value": "no",
+                                "options": [
+                                    {
+                                        "value": "no",
+                                        "title": "No indent"
+                                    },
+                                    {
+                                        "value": "yes",
+                                        "title": "2 Letters Indent"
+                                    }
+                                ],
+                                "options_zh_cn": [
+                                    {
+                                        "value": "no",
+                                        "title": "不缩进"
+                                    },
+                                    {
+                                        "value": "yes",
+                                        "title": "缩进2字"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+
+            }
+        ]
+    }
+]
