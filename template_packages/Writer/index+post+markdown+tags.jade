@@ -23,19 +23,23 @@ html
 		+load("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic")
 		+load("fonts")
 	body
+		if request.url_without_host.startswith('/?')
+			site_url = request.url_without_host
+		else
+			site_url = '/'
 		#wrapper
 			header.site-header
 				.container
 					.site-title-wrapper
 						h1.site-title
-							a.js-ajax-link(title=site.title, href="/")= site.title
+							a.js-ajax-link(title=site.title, href=site_url)= site.title
 						a.button-square(href="/feed")
 							i.fa.fa-rss
 					ul.site-nav
 						li.site-nav-item
-							a.js-ajax-link(href="/") Lastest Post
+							a.js-ajax-link(href=site_url) Lastest Post
 						li.site-nav-item
-							a.js-ajax-link.js-show-index(href="/") Browser Posts
+							a.js-ajax-link.js-show-index(href=site_url) Browser Posts
 						if has("about.md")
 							li.site-nav-item
 								a.js-ajax-link(href="/about.md") About
@@ -66,7 +70,7 @@ html
 			.container
 				.site-title-wrapper
 					h1.site-title
-						a.js-ajax-link(title=site.title, href="/")= site.title
+						a.js-ajax-link(title=site.title, href=site_url)= site.title
 					a.button-square.button-jump-top.js-jump-top(href="#")
 						i.fa.fa-angle-up
 				p.footer-copyright
