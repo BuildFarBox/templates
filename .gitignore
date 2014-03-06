@@ -1,0 +1,5 @@
+*.py
+*.pyc
+template_packages/*.txt
+template_packages/default
+
