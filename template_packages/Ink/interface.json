@@ -144,6 +144,31 @@
                     }
                 ]
 
+            },
+            {
+                "title": "Social Comments",
+                "title_zh_cn": "第三方评论",
+                "cells":[
+                    {
+                        "parts_per_line": 2,
+                        "parts": [
+                            {
+                                "key": "disqus",
+                                "title": "Disqus",
+                                "title_zh_cn": "Disqus",
+                                "model": "text",
+                                "default_value": "Disqus Shortname"
+                            },
+                            {
+                                "key": "duoshuo",
+                                "title": "DuoShuo",
+                                "title_zh_cn": "多说",
+                                "model": "text",
+                                "default_value": "DuoShuo ID"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
