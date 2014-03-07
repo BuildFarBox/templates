@@ -236,7 +236,7 @@ del {
             position: relative;
             line-height: 1.2em;
             background: $bg_color;
-            padding: 0.1em 0 0.1em 1em;
+            padding: 0.1em 0.5em 0.1em 1em;
 
             &:before {
                 position: absolute;
@@ -249,6 +249,7 @@ del {
 
              p {
                 padding-left: 20px;
+                line-height: 1.8;
             }
         }
 
