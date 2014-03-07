@@ -1,0 +1,23 @@
+extends base
+block content
+	for post in posts
+		if post.metadata.refer
+			.post.ref-post
+				h2.title
+					a(target='_blank', href=post.metadata.refer)= post.title
+					span →
+				span.date= post.date.format('%B %d, %Y')
+				.comment-body.abstract-content= post.content
+		else
+			.post.link-title-post
+				h2.title
+					a(href=post.url)= post.title
+				span.date= post.date.format('%B %d, %Y')
+				.post-body.abstract-content= post.content.opening or post.content.limit(100)
+
+	if paginator.has_pre or paginator.has_next
+		.pager
+			if pager.has_pre
+				a.pre(href=pager.pre_url) ← new posts
+			if pager.has_next
+				a.next(href=pager.next_url) older posts →

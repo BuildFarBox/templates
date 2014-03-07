@@ -1,0 +1,26 @@
+extends base
+block title
+	| Archive
+block content
+	entries = get_data(type='post', sort='desc', limit=300).group('date:year', reverse=True)
+	ul.archive-list
+		for year, posts in entries
+			li
+				p.year= year
+				for post in posts
+					.post-set
+						span.date= post.date.format('%b. %d')
+						.post-link
+							if post.metadata.refer
+								a.refer-link(href=post.metadata.refer, target="_blank")
+									span [reference]
+									post.title
+							else
+								a(href=post.url)= post.title
+	if paginator.has_pre or paginator.has_next
+		.pager
+			if pager.has_pre
+				a.pre(href=pager.pre_url) ← new posts
+			if pager.has_next
+				a.next(href=pager.next_url) older posts →
+

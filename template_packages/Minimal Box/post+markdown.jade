@@ -1,0 +1,18 @@
+extends base
+block title
+	post.title
+block content
+	.post.normal-post
+		h1.title= post.title
+			a.perman-link(href=request.url, title="permanent link") ∞
+		span.date= post.date.format('%B %d, %Y')
+		if post.tags
+			p.tags Tags:
+				for tag in post.tags
+					a(href="/tags/{{tag}}")= tag
+
+		.post-body= post.content
+			p.eof · EOF ·
+
+	.comments
+		include include.comments
