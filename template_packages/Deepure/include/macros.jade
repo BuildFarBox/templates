@@ -1,0 +1,36 @@
+mixin make_pager(pager_name=None)
+	if pager_name:
+		pager = get_paginator(pager_name)
+	.pager.cf
+		if pager.has_pre or pager.has_next
+			if pager.has_pre
+				a.prev(href=pager.pre_page_url)
+					i.fa.fa-angle-left
+					| &nbsp;{{ '上一页' if lang=='zh_cn' else  'Previous'}}
+			if pager.has_next
+				a.next(href=pager.next_page_url)
+					i.fa.fa-angle-right
+					| &nbsp;{{ '下一页' if lang=='zh_cn' else  'Next'}}
+
+mixin make_posts_list
+	for post in posts
+		article.loop-post
+			if post.cover
+				a.entry-thumbnail(href=post.url)
+					img(src=post.cover.s200)
+			h2
+				a(href=post.url)= post.title
+			.entry-meta
+				span
+					i.fa.fa-time
+					| {{ post.date.format('%Y-%m-%d') }}
+				if post.tags
+					i.fa.fa-tags &nbsp;
+					for tag in post.tags
+						a.tag(href='/tags/{{tag}}') &nbsp;{{tag}}
+				span.count
+					i.fa.fa-book
+					| &nbsp;{{post.visits}}
+			.post-intro= post.content.limit(200).no_pic
+	+make_pager()
+

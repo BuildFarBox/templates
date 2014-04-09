@@ -1,0 +1,26 @@
+extends base.jade
+block title
+	post.title
+block content
+	.primary
+		article.post
+			header
+				h2
+					a(href=post.url)= post.title
+				.entry-meta
+					span
+						i.fa.fa-time
+						| {{ post.date.format('%Y-%m-%d') }}
+					if post.tags
+						span
+							i.fa.fa-tags &nbsp;
+							for tag in post.tags
+								a.tag(href="/tags/{{tag}}") &nbsp;{{tag}}
+					span.count
+						i.fa.fa-book
+						| &nbsp;{{post.visits}}
+			.entry= post.content
+
+			include include/comments
+
+	include include/sider.html

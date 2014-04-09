@@ -1,0 +1,26 @@
+extends base.jade
+
+block title
+	| {{ folder.title or 'Images' }}
+
+block content
+	{% from "include/macros.jade" import make_pager %}
+	albums = get_data(types=['image', 'folder'], path=folder.path, min_images_count=1, level=1, limit=6)
+	ul.image-list.cf
+		for album in albums
+			if album.content_type=='folder'
+				li.folder
+					a(href="/album/{{album.path}}")
+						img(src='{{album.url}}?width=320&height=214&fixed=true', title=album.title)
+						span {{ album.images_count}} photos
+			else
+				li
+					a(href="/image/{{album.path}}")
+						img(src='{{album.url}}?width=320&height=214&fixed=true', title=album.title)
+
+	+make_pager
+
+
+
+
+

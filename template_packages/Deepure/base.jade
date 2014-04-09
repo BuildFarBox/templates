@@ -1,0 +1,54 @@
+html
+	head
+		title
+			block title
+				site.title
+		meta(name="viewport", content="width=device-width; initial-scale=1; maximum-scale=1")
+    	meta(name="keywords", content=site.configs.keywords.escaped)
+    	meta(name="description", content=site.raw_content.escaped)
+		meta(name="renderer", content="webkit")
+		//if lt IE 9
+			load('html5shim.googlecode.com/svn/trunk/html5.js')
+		//if IE
+			load('/template/sass/ie.scss')
+		load('fonts')
+		load('/template/sass', ('normalize.scss', 'screen.scss'))
+	body
+		#wrap
+			header#header.cf
+				.logo
+					a(href="/")= site.title
+				nav.main-nav
+					ul.menu
+						li= a_with_selected('/', 'Home')
+						li= a_with_selected('/archive', 'Archive')
+						if has('images')
+							li= a_with_selected('/album', 'Photos')
+						if has('links.md')
+							li= a_with_selected('/links.md', 'Links')
+						if has('about.md')
+							li= a_with_selected('/about.md', 'About')
+
+			#main.cf
+				block content
+
+			footer#footer
+				.footer-right
+					a(href="/template", title="Clone Template")
+						i.fa.fa-cloud-download
+				.copyright Powered by &nbsp;
+					a(href="https://www.farbox.com", target="_blank") FarBox &nbsp;
+					| Theme by <a href="http://motype.org">Deepure</a> . Thanks for
+					a(href="http://fontawesome.io/") Fontawesome
+					| &nbsp; &
+					a(href="http://dropbox.com/") Dropbox
+
+			// for duoshuo recent comments
+			if site.configs.duoshuo
+				script(type="text/javascript")
+					var duoshuoQuery = {short_name:"{{ site.configs.duoshuo }}"};
+					(function() { var ds = document.createElement('script'); ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+

@@ -1,0 +1,30 @@
+.sider
+	aside
+		h3
+			i.fa.fa-magic
+			span &nbsp; Recent Articles
+		ul
+			rposts = get_data(path='/', type='post', limit=6, with_page=False)
+			for post in rposts
+				li.listing-item
+					a(href=post.url, title=post.title)= post.title
+	if site.configs.duoshuo
+		aside
+			h3
+				i.fa.fa-comments
+				span &nbsp; Recent Comments
+			ul.ds-recent-comments(data-show-title="0", data-show-time="0", data-show-avatars="0")
+	elif site.configs.disqus
+		aside
+			h3
+				i.fa.fa-comments
+				span &nbsp; Recent Comments
+			script(type="text/javascript", src="http://{{site.configs.disqus}}.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&excerpt_length=200&hide_mods=1")
+	if site.tags
+		aside
+			h3
+				i.fa.fa-tags
+				span &nbsp;Tags
+			div
+				for tag_name, tag_count in site.tags
+					a(href="/tags/{{tag_name}}") {{tag_name}} &nbsp;

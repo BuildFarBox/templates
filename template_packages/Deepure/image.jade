@@ -1,0 +1,32 @@
+extends base.jade
+
+block content
+	image = get_doc(path2)
+	if not image
+		+raise_404
+	else
+		+add_doc_actions(image)
+		pre_one = get_connected_one(image, same_folder=True, position='<')
+		next_one = get_connected_one(image, same_folder=True, position='>')
+	.image-wrap
+		h2.title= image.title
+		.information
+			i.fa.fa-time
+			span.date= image.date.format('%Y-%m-%d %H:%M')
+		.image
+			img(src="{{ image.url }}?width=960")
+			+bread_nav(image.path, '/album/')
+			.connected-images
+				if pre_one
+					a.pre(href='/image/{{pre_one.path}}')
+						span &lt;{{ pre_one.title }}
+				else
+					a.pre(href="#pre")
+						span &lt; No More
+				if next_one
+					a.next(href='/image/{{next_one.path}}')
+						span &gt;{{ next_one.title }}
+				else
+					a.next(href="#next")
+						span &gt; No More
+		include include/comments

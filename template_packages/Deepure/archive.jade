@@ -1,0 +1,16 @@
+extends base
+{% from "include/macros.jade" import make_pager %}
+block content
+	entries = get_data(type='post', limit=300, sort='desc', pager_name='archive').group('date:year', reverse=True)
+	ul.archive-list
+		for year, posts in entries
+			li.list-years= year
+			ul.listing
+				for post in posts
+					li.listing-item
+						span.date= post.date.format('%Y-%m-%d')
+						a(href=post.url, title=post.title)= post.title
+
+	+make_pager(pager_name='archive')
+
+
