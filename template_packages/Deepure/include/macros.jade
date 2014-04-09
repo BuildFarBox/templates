@@ -31,6 +31,6 @@ mixin make_posts_list
 				span.count
 					i.fa.fa-book
 					| &nbsp;{{post.visits}}
-			.post-intro= post.content.limit(200).no_pic
+			.post-intro= post.content.limit(300).no_pic
 	+make_pager()
 

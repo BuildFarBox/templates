@@ -3,7 +3,7 @@
 		h3
 			i.fa.fa-magic
 			span &nbsp; Recent Articles
-		ul
+		ul.recent_posts
 			rposts = get_data(path='/', type='post', limit=6, with_page=False)
 			for post in rposts
 				li.listing-item
@@ -19,7 +19,7 @@
 			h3
 				i.fa.fa-comments
 				span &nbsp; Recent Comments
-			script(type="text/javascript", src="http://{{site.configs.disqus}}.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&excerpt_length=200&hide_mods=1")
+			script(type="text/javascript", src="http://{{site.configs.disqus}}.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&excerpt_length=50&hide_mods=1")
 	if site.tags
 		aside
 			h3

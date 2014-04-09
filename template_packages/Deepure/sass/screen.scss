@@ -168,6 +168,16 @@ body {
 
 .post {
     padding-bottom: 20px;
+
+    p{
+        margin: 0 0 10px;
+    }
+
+    hr{
+        margin: 1.5em 0;
+    }
+
+
     h2 {
         margin-top: 0;
         font-family: 'Droid Sans', 'Helvetica Neue', Arial, Helvetica, "Microsoft yahei", sans-serif;
@@ -190,20 +200,19 @@ body {
     }
     .entry {
         margin-top: 30px;
+        line-height: 1.8;
     }
     code {
         border: 1px solid #e0e0e0;
         background: #F8F8F8;
         padding: 0 5px;
         margin: 0 2px;
-        font-size: 13px;
         font-family: Menlo, monospace;
     }
     pre {
         border: 1px solid #e0e0e0;
         margin: 1.2em -2px;
         padding: 15px 20px;
-        font-size: 13px;
         font-family: Menlo, monospace;
         line-height: 2.2;
         display: block;
@@ -450,7 +459,6 @@ body {
     }
     a {
         color: #999282;
-        font-size: 16px;
     }
     #ds-recent-comments .ds-comment .ds-excerpt {
         font-size: 14px;
@@ -460,7 +468,17 @@ body {
         border-top: 1px dashed gainsboro;
     }
 
+    .recent_posts{
+        border-bottom: 1px dashed gainsboro;
+        li{
+            border-top: 1px dashed gainsboro;
+            line-height: 1.2;
+            padding: 0.75em 0;
+        }
+    }
+
     .dsq-widget-item{
+        color: #666;
         .dsq-widget-user{
             font-size: 14px;
         }
@@ -596,6 +614,7 @@ body {
         }
     }
     .post {
+
         .entry-meta {
             .count {
                 float: none;
