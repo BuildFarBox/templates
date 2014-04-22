@@ -92,9 +92,14 @@
                                         "title": "No indent"
                                     },
                                     {
+                                        "value": "hard",
+                                        "title": "2 Letters Indent Every Line"
+                                    },
+                                    {
                                         "value": "yes",
-                                        "title": "2 Letters Indent"
+                                        "title": "2 Letters Indent Every Paragraph"
                                     }
+
                                 ],
                                 "options_zh_cn": [
                                     {
@@ -102,8 +107,12 @@
                                         "title": "不缩进"
                                     },
                                     {
+                                        "value": "hard",
+                                        "title": "每行缩进2字"
+                                    },
+                                    {
                                         "value": "yes",
-                                        "title": "缩进2字"
+                                        "title": "每段缩进2字"
                                     }
                                 ]
                             }
