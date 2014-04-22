@@ -8,7 +8,7 @@ block content
 					a(href=post.url)= post.title
 				.entry-meta Posted on
 					time.entry-date(datetime=post.date.isoformat())= post.date.format('%B %d, %Y')
-			.entry-content= post.content(250)
+			.entry-content= post.content.limit(250)
 				p
 					a(rel="nofollow", href=post.url) Keep reading...
 			footer.entry-footer
