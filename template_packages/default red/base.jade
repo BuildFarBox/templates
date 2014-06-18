@@ -15,7 +15,8 @@ body
 		#nav
 			a(href="/") Home
 			a(href="/archive") Archive
-			a(href="/categories") Categories
+			if has('categories')
+				a(href="/categories") Categories
 			if site.tags
 				a(href="/archive?use=tags") Tags
 			if has('links.md')

@@ -336,6 +336,10 @@ background:none!important;
             }
         }
 
+        ul p, ol p{
+            overflow: visible;
+        }
+
         p {
             margin-bottom: 1em;
         }

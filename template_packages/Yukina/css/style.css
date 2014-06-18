@@ -139,7 +139,9 @@ body {
 
 
 
-
+ul p, ol p{
+    overflow: visible;
+}
 
 ul p, ol p{
     margin-bottom: 0.5em;

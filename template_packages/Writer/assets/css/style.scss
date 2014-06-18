@@ -56,6 +56,10 @@ ul, ol {
     }
 }
 
+ul p, ol p{
+    overflow: visible;
+}
+
 blockquote {
     border-left: 1px dotted $secondary;
     margin: 40px 0;

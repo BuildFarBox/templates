@@ -202,6 +202,10 @@ del {
             font-size: 0.9em;
         }
 
+        ul p, ol p{
+            overflow: visible;
+        }
+
         code, pre {
             font-family: Monaco, Andale Mono, Courier New, monospace;
         }

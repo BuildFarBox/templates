@@ -246,8 +246,18 @@ body {
         word-wrap: break-word;
         overflow: hidden;
     }
+    ul p, ol p{
+        overflow: visible;
+    }
 
 }
+
+.codehilite{
+    pre{
+        white-space: pre;
+    }
+}
+
 
 .nav-single {
     margin: 10px 0;
@@ -408,7 +418,7 @@ body {
             a:hover {
                 background: rgba(0, 0, 0, 0.3);
                 *background:transparent;
-		        *filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4B000000,endColorstr=#4B000000);
+		        *filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4B000000,endColorstr=#4B000000)";
 		        *zoom: 1;
             }
             a:hover span {
