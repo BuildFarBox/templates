@@ -1,0 +1,346 @@
+body{
+	background-color: #fff;
+	color: #000;
+	font-family: "Avenir", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	width:100%;
+}
+a {
+    color:#000;
+    text-decoration: none;
+    &:hover{
+        color:#00a2ff;
+    }
+}
+
+
+
+
+#sidebar {
+	width: 260px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: auto;
+	min-height: 690px;
+
+    #avatar {
+        margin:30px auto 0 auto;
+
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 5px solid #f8f8f8;
+
+
+        .border {
+            border-radius:50%;
+            width:100px;
+            height:100px;
+            border:3px solid #d3e7f4;
+            margin-top: 7px;
+            margin-left: 7px;
+
+
+            .img_container {
+                border-radius:50%;
+                width:80px;
+                height:80px;
+                border:2px solid #f0f0f0;
+                margin-left: 8px;
+                margin-top: 8px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius:50%;
+                    overflow: hidden;
+                }
+            }
+
+        }
+
+        a:hover .border{
+            border-color: #58acf4;
+        }
+    }
+
+    .title{
+        text-align: center;
+        a{
+            font-weight: 900;
+            font-size: 34px;
+            line-height: 1.2;
+            border: none;
+            display: block;
+            margin: 30px 20px 50px 20px;
+        }
+
+    }
+
+    ul{
+        list-style: none;
+
+        li{
+            margin-top:15px;
+	        height:32px;
+
+            a{
+                font-size: 14px;
+                border-radius: 30px;
+                background-color: #fff;
+                z-index: 999;
+                padding: 7px 20px;
+                border:4px solid #f8f8f8;
+
+                &:hover, &.selected{
+                    border-color: #00a2ff;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+#banner {
+	padding: 40px 0 40px 50px;
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 24px;
+
+    .sub_info {
+        padding-left: 1em;
+        color:#e0e0e0;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        font-family: arial, sans-serif;
+    }
+
+    h1{
+        display: inline;
+        font-size: 2.2em;
+    }
+
+    a{
+        color:#00a2ff;
+        font-weight: bold;
+        font-size:16px;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+
+article{
+    border-top:1px solid #e0e0e0;
+	min-height: 135px;
+	padding:40px 60px 40px 50px;
+
+    h2.title{
+        font-size: 26px;
+    }
+
+
+    .content{
+        color:#333;
+        line-height:1.8em;
+        margin-bottom: 80px;
+
+        a{
+            line-height: 1em;
+            display: inline-block;
+            border-bottom: 1px dashed #00a2ff;
+            color:#000;
+            &:hover{
+                border-bottom: 1px solid #00a2ff;
+            }
+        }
+
+        p{
+            margin: 1.2em 0;
+        }
+
+        li p, blockquote p{
+            margin: 0;
+        }
+
+        blockquote {
+            display: inline-block;
+            padding-left: 18px;
+            padding-bottom: 0;
+            font-size: 15px;
+            line-height: 25px;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            border-left: 10px solid #00a2ff;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            border:1px solid #e0e0e0;
+            padding:5px;
+        }
+    }
+}
+
+
+
+#main {
+	margin-left: 260px;
+	border-left: 1px solid #efefef;
+
+	position: relative;
+
+    .posts {
+        .meta{
+            display: none;
+        }
+
+        article{
+            .content{
+                margin-bottom: 30px;
+            }
+
+            h2.title{
+                margin: 0.2em 0 1.3em 0;
+            }
+
+            img {
+                max-width:120px;
+                max-height: 120px;
+                border:1px solid #e0e0e0;
+                padding:2px;
+            }
+        }
+    }
+
+    nav.pager{
+        border-top:1px solid #e0e0e0;
+	    padding:60px 40px;
+        position: relative;
+
+        a{
+            text-transform: uppercase;
+            font-size: 14px;
+            border-radius: 30px;
+            background-color: #fff;
+            z-index: 999;
+            padding: 7px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border:4px solid #f8f8f8;
+
+            &:hover{
+                border-color: #00a2ff;
+            }
+
+            &.pre{
+                position: absolute;
+                left: 40px;
+                top: 30px;
+            }
+            &.next{
+                position: absolute;
+                right: 40px;
+                top: 30px;
+            }
+        }
+    }
+
+}
+
+#archive {
+    font-size:12px;
+    list-style:none;
+    list-style-type: square;
+    list-style-position: inside;
+    color: #00a2ff;
+    margin-bottom: 80px;
+
+    h2{
+        padding-left:13px;
+        font-size: 18px;
+        margin: 0.35em 0 1.3em 0;
+    }
+}
+
+
+
+#footer {
+	border-top:1px solid #e0e0e0;
+	font-size: 12px;
+	padding:40px;
+	color:#aaa;
+
+    a{
+        color:#aaa;
+        &:hover{
+            color:#00a2ff;
+        }
+    }
+}
+
+
+@media (max-width: 640px) {
+    #sidebar{
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0;
+        min-height: 50px;
+
+        .clear{
+            clear: both;
+        }
+
+        ul{
+            margin: 15px 0;
+            padding: 0;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+            text-align: center;
+
+            li{
+                float: left;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                a{
+                    padding: 5px 10px;
+
+                }
+            }
+        }
+
+        #avatar{
+            display: none;
+        }
+        .title{
+            display: none;
+        }
+    }
+    #main{
+        clear: both;
+        margin-left: 0;
+
+        article{
+            padding: 15px;
+        }
+    }
+    #banner{
+        padding: 40px 15px;
+    }
+}
+
+
+

@@ -1,0 +1,16 @@
+extends base.jade
+block content
+	posts = get_posts(limit=300, sort=-1, status='public')
+	ul#archive
+		for post in posts
+			li
+				| [{{ post.date.format('%Y-%m-%d') }}]
+				h2
+					a(href=post.url)= post.title
+	if paginator.has_next or paginator.has_pre
+		nav.pager
+			if paginator.has_pre
+				a.pre(href=paginator.pre_page_url) Pre
+			if paginator.has_next
+				a.next(href=paginator.next_page_url) Next
+

@@ -1,0 +1,8 @@
+extends  base.jade
+block banner
+	h1.title= post.title
+	span.sub_info= post.date.format('%b,%d %Y')
+block content
+	article
+		.content= post.content
+		include include/comments.jade

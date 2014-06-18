@@ -1,0 +1,45 @@
+html
+	head
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		meta(name="renderer", content="webkit")
+		title= post.title or site.title
+		+load('/template/basic.scss,/template/style.scss')
+	body
+		header#sidebar
+			figure#avatar
+				a(href='/')
+					.border
+						.img_container
+							img(src=site.avatar, alt=site.title)
+			.title
+				a(href='/')= site.title
+			ul
+				li
+					+a_with_selected("/archive", 'Archive')
+				if has('images')
+					li
+						a(href="/album") Album
+				if has('about.md')
+					li
+						+a_with_selected("/about.md", 'About')
+				if has('links.md')
+					li
+						+a_with_selected("/links.md", 'Links')
+				.clear
+
+		section#main
+			header#banner
+				block banner
+					span.date= now.format('%b,%d %Y')
+					span.sub_info today
+			block content
+			section#footer
+				| &copy; 2013 {{ site.title }}
+				| | Coded by <a href="http://sync.sh" target="_blank">YCF</a>
+				| | Inspired by <a href="https://svbtle.com/" target="_blank">Svbtle</a>
+				| | Powered by <a href="https://www.farbox.com" target="_blank">FarBox</a>
+				| | <a href="/template" target="_blank">Clone Theme</a></section>
+
