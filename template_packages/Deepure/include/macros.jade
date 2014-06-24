@@ -22,7 +22,7 @@ mixin make_posts_list
 				a(href=post.url)= post.title
 			.entry-meta
 				span
-					i.fa.fa-time
+					i.fa.fa-calendar &nbsp;
 					| {{ post.date.format('%Y-%m-%d') }}
 				if post.tags
 					i.fa.fa-tags &nbsp;
