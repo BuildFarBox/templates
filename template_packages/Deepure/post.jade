@@ -13,7 +13,7 @@ block content
 						| {{ post.date.format('%Y-%m-%d') }}
 					if post.tags
 						span
-							i.fa.fa-tags
+							i.fa.fa-tags &nbsp;
 							for tag in post.tags
 								a.tag(href="/tags/{{tag}}") &nbsp;{{tag}}
 					span.count
