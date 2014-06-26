@@ -1,0 +1,18 @@
+extends base
+block content
+	for post in posts
+		.index_post
+			.post_left
+				h2.title
+					a(href=post.url)= post.title
+				span.date= post.date.format('%B %d, %Y')
+			.post_right
+				a(href=post.url)= post.content.limit(300).split('</div>', 1)[0]+'</div>'
+			.clear
+
+	if paginator.has_pre or paginator.has_next
+		.pager
+			if pager.has_pre
+				a.pre(href=pager.pre_url) ← Pre
+			if pager.has_next
+				a.next(href=pager.next_url) Next →
