@@ -1,0 +1,29 @@
+extends base.jade
+
+block content
+	new_post = get_data(type='post', limit=1, with_page=False)
+	if new_post
+		.new_post
+			h2
+				a(href=new_post.url)= new_post.title
+			a.summary(href=new_post.url)
+				.content= new_post.content.limit(180)
+
+	ul.categories#categories
+		for category in  get_data(type='folder', level=1, min_posts_count=1, with_page=False, limit=10)
+			li
+				a(href="/category/{{ category.path }}")
+					h3= category.title
+					span {{ category.posts_count }} posts
+
+	script
+		function auto_margin(){
+			var e = document.getElementById('categories');
+			e.style.marginLeft = 0;
+			var width = document.width || document.body.clientWidth;
+			if (e && width > 292){
+					e.style.marginLeft = ( width% 296) /2 + 'px';
+				}
+			}
+		auto_margin();
+		window.onresize = auto_margin;

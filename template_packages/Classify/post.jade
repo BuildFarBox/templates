@@ -1,0 +1,15 @@
+extends base
+
+block title
+	| {{ post.title }}
+
+block content
+	.post
+		h1.title= post.title
+		.content
+			.post_content= post.content
+			.info
+				.date @{{post.date}}
+
+		include include/comments.jade
+

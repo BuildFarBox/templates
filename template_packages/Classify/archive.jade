@@ -1,0 +1,14 @@
+extends base
+block content
+	group_type = 'tags' if request.path.strip('/')=='tags' else '-date:year'
+	entries = get_data(type='post',limit=50, sort='desc').group(group_type)
+
+	for sub_title, posts in entries
+		.archive
+			h1= sub_title
+			ul.listing
+				for post in posts
+					li.listing_item
+						span.date= post.date.format("%Y-%m-%d")
+						a(href=post.url, title=post.title)= post.title
+	include include/paginator.jade
