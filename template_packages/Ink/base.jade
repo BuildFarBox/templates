@@ -22,23 +22,21 @@ html(lang="zh-cn")
 			.sidebar.pure-u
 				#avatar
 					a(href="/")
-						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="返回首页")
+						img.logo(src="{{site.avatar}}?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
 				h1.site_name
-					a(href="/")
-						img(src=site.configs.name, alt=site.title)
+					a(href="/")= site.title
 				#switch
 					img(src="/template/img/menu.png", alt="menu icon")
 				ul.nav
-					li#about= a_with_selected('/about', '关于')
-					li#category= a_with_selected('/category', '分类')
+					if has('about.md')
+						li= a_with_selected('/about.md', '关于' if lang=='zh_cn' else 'About')
+					li= a_with_selected('/category', '分类' if lang=='zh_cn' else 'Categories')
 					if site.tags
-						li#tags= a_with_selected('/tags', '标签')
-					li#archive= a_with_selected('/archive', '归档')
-					li#sub= a_with_selected('/subscribe', '订阅')
+						li= a_with_selected('/tags', '标签' if lang=='zh_cn' else 'Tags')
+					li= a_with_selected('/archive', '归档' if lang=='zh_cn' else 'Archive')
+					li= a_with_selected('/feed', '订阅' if lang=='zh_cn' else 'Feed')
 					li#search
-					 	a(href="#") 搜索
-					li#btt
-						a(href="#main")
+					 	a(href="#")= '搜索' if lang=='zh_cn' else 'Search'
 				.search-bar
 					input#search-bar(type='text', value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
 					a(href="javascript:search()")

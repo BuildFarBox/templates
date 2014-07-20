@@ -3,7 +3,7 @@ extends base
 is_index = request.path.strip('/')=='tags'
 
 block title
-	| {{ "标签" if is_index else tags.join('+') }} | {{ site.title }}
+	| {{ "Tags" if is_index else tags.join('+') }} | {{ site.title }}
 
 block content
 	if is_index
@@ -12,13 +12,7 @@ block content
 				li.listing_title
 					a(href="/tags/{{tag_name}}")= tag_name
 					| ({{tag_count}})
-		.pager
-			a(class="pre", href="/category") 分类
-			a(class="next", href="/archive") 归档
+
 	else
 		#posts
-			+set_per_page(10)
 			+make_posts_list()
-
-
-

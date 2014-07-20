@@ -1,8 +1,8 @@
 extends base
-{% from "mixins" import make_paginator, get_url %}
+{% from "mixins" import make_paginator%}
 
 block title
-	| 归档 | {{ site.title }}
+	| Archive | {{ site.title }}
 
 block content
 	ul.list_with_title
@@ -13,7 +13,7 @@ block content
 					li.listing-item
 						span.date
 							| {{ post.visits or 0 }} | {{ post.date.format("%m.%d") }}
-						+get_url(post)
+						a(href=post.url, title=post.title)= post.title
 
 	+make_paginator()
 
