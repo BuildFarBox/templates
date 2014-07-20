@@ -1,0 +1,17 @@
+extends base
+block title
+	title Archive
+block content
+	entries = get_data(type='post', sort='desc', limit=300).group('date:year', reverse=True)
+	#archive
+		for year, posts in entries
+			h3= year
+			ul.listing
+				for post in posts
+					li.listing_item
+						span= post.date.format("%Y-%m-%d")
+						a(href=post.url, title=post.title)= post.title
+		include include/paginator.jade
+
+
+

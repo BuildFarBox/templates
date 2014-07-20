@@ -1,0 +1,7 @@
+if paginator.has_previous or paginator.has_next
+	.clear
+	.pager
+		if paginator.has_previous
+			a.pre(href=paginator.previous_page_url)= '上一页' if lang=='zh_cn' else 'Pre Page'
+		if paginator.has_next
+			a.next(href=paginator.next_page_url)= '下一页' if lang=='zh_cn' else 'Next Page'

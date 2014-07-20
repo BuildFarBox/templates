@@ -1,0 +1,16 @@
+extends base
+block content
+	.post
+		h1.entry_title= post.title
+		if lang=='zh_cn'
+			.date= post.date.format("于 %Y 年 %m 月 %d 日")
+		else
+			.date= post.date.format("Published on  %Y - %m - %d")
+		.post_body= post.content
+		.info
+			if post.tags
+				span.tags
+					for tag in post.tags
+						a(href='/tags/{{tag}}')= '#'+tag
+			.clear
+	include include/comments

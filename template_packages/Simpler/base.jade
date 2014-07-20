@@ -1,0 +1,46 @@
+html
+	head
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		meta(name="renderer", content="webkit")
+		block title
+			title= post.title or tags.join('+') or site.title
+		+load('/template/css/basic.scss,/template/css/style.scss')
+	body
+		#header
+			#nav_box
+				ul#nav_menu
+					li
+						a(href='/') Home
+					li
+						a(href='/archive') Archive
+					if has('images')
+						li
+							a(href='/album') Albums
+						if not has('posts')
+							+redirect('/album')
+					pages = get_data(status='pages', type='post', limit=5, with_page=False, sort='position')
+					for page_p in pages
+						li
+							a(href="/{{page_p.path}}")= page_p.filename.split('.')[0].title()
+				#search_bar
+					input#search_value(placeholder="Search",type="text",value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+				.clear
+
+		#main
+			block content
+
+
+		#footer
+			span.copyright &copy; 2013 {{ site.configs.title }}
+			span.designed_by &nbsp;| designed by <a href="http://www.veganshe.com/">veganshe</a>
+			span.powered &nbsp;| on <a href="https://www.farbox.com">FarBox</a>
+			#back_to_top.back-to
+				a.back_top(title='to Top', href="#") to Top
+
+		+load('jquery, /template/scripts.coffee')
+
+
+
