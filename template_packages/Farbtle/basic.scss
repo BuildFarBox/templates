@@ -1,20 +1,34 @@
-
 html {
-  height: 100%;
-  max-height: 100%; }
+    height: 100%;
+    max-height: 100%;
+    padding: 0;
+    margin: 0;
+}
 
 body {
   height: 100%;
   max-height: 100%;
+    padding: 0;
+    margin: 0;
 
-  line-height: 1.6em;}
+  line-height: 1.6em;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
 
 
 h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin: 2rem 0;
-  font-family: 'Open Sans', sans-serif; }
+}
 
 h1 {
   font-size: 2.1rem;
@@ -48,7 +62,8 @@ ol ol, ul ul,
 ul ol, ol ul {
   margin: 0.4em 0; }
 
-ul p, ol p, li p, .content li p, blockquote p, .content blockquote p{
+
+ul p, ol p, li p, .content li p, blockquote p, .content blockquote p, .post blockquote p, .post li p{
     margin: 0;
 }
 
@@ -106,13 +121,15 @@ mark {
 
 
 
+
 code, tt {
   padding: 1px 3px;
   font-family: Inconsolata, monospace, sans-serif;
   font-size: 0.85em;
   white-space: pre-wrap;
   border: 1px solid #E3EDF3;
-  background: #F7FAFB;
+  background: #f7f7f9;
+   color: #d14;
   border-radius: 2px; }
 
 pre {
@@ -135,6 +152,7 @@ pre code, tt {
   white-space: pre-wrap;
   background: transparent;
   border: none;
+    color: #333;
   padding: 0; }
 
 kbd {
@@ -149,6 +167,10 @@ kbd {
   background: #f4f4f4;
   border-radius: 4px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 white inset; }
+
+
+
+
 
 table {
   -moz-box-sizing: border-box;
@@ -170,6 +192,45 @@ table tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9; }
 
 
+.gist{
+    font-size: 12px;
+    table{
+        margin: 0;
+        width: auto;
+
+        pre{
+            font-size: 12px;
+        }
+
+        .line-numbers{
+            font-size: 12px;
+        }
+    }
+
+}
+.codehilitetable{
+    margin: 0;
+    width: auto;
+
+    tr th{
+        border: none
+    }
+    tr th, tr td{
+        padding: 0; border:none
+    }
+
+    .linenos{
+        pre{
+            background: transparent;
+            border: none;
+        }
+    }
+
+    pre{
+        margin: 0;
+    }
+}
+
 
 .toc {
     border: 1px solid #f0f0f0;
@@ -180,12 +241,185 @@ table tbody > tr:nth-child(odd) > th {
 
 
 
+
+/* for fb comment*/
+
+#fb_comments_container {
+    /*width: 100%;*/
+    overflow: hidden;
+    max-width: 910px;
+    margin: 0 auto;
+    /*margin: 20px 0 auto auto;*/
+
+    #fb_comments {
+        list-style-type: none;
+        padding: 0;
+
+        h1 {
+            font-size: 1.3em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        h3 {
+            font-size: 1.1em;
+        }
+        h4, h5, h6 {
+            font-size: 1.05em;
+        }
+
+        .comment {
+            position: relative;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+            *border-bottom: 1px solid #f0f0f0;
+
+            .avatar {
+                position: absolute;
+                top: 25px;
+                left: 0;
+                width: 50px;
+                float: left;
+
+                img {
+                    width: 48px;
+                    border: none;
+                    border-radius: 5px;
+                    margin: 0;
+                }
+
+            }
+
+            .comment_body, .c_content {
+                margin-left: 70px;
+                display: block;
+
+                p {
+                    margin: 5px 0 15px 0;
+                    padding: 0;
+                    line-height: 1.8;
+                }
+
+                .author {
+                    line-height: 1.5em;
+                    margin: 0;
+                    padding: 0;
+
+                    b {
+                        color: #555;
+                    }
+                    small {
+                        font-weight: normal;
+                        padding-left: 10px;
+                        font-size: 0.7em;
+                        color: #666;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+}
+
+#fb_new_comment {
+    padding-bottom: 50px;
+
+    textarea {
+        border-radius: 5px;
+
+        height: 80px;
+        width: 98%;
+        /*margin: 20px auto 0 auto;*/
+        padding: 5px;
+        font-size: 1em;
+        border: 1px solid rgba(150, 150, 150, 0.5);
+        *border: 1px solid #a8a8a8;
+        line-height: 1.5;
+    }
+
+    .comment_error {
+        color: red;
+        text-align: center;
+        display: block;
+        font-size: 0.8em;
+        padding-top: 1em;
+    }
+
+    .c_button:hover {
+        background: #E60900;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .c_button, #c_submit {
+        cursor: pointer;
+        font-family: "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        font-size: 1em;
+        line-height: 1.3em;
+        letter-spacing: 1px;
+        border-radius: 5px;
+        padding: 5px 5px 2px 5px;
+    }
+
+    .input_body {
+        margin-top: 10px;
+
+        ul {
+            list-style: none;
+            padding: 5px 0;
+            margin: auto 0;
+
+            li {
+                float: left;
+                margin-right: 2.2%;
+                /*for IE7*/
+                *margin-right: 22px;
+
+                label {
+                    line-height: 1em;
+                }
+
+                input {
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                    padding: 5px;
+                    background: rgba(255, 255, 255, 0.5);
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+
+    }
+
+}
+
+#SwfStore_farbox_0 {
+    height: 0;
+    overflow: hidden;
+}
+
+
+/*iphone*/
+@media screen and (max-width: 320px) {
+    #fb_comments {
+        .c_content, .comment_body {
+            margin-left: 57px;
+        }
+
+    }
+}
+
+
+
+
 .codehilite code, .codehilite pre {
     word-break: break-word;
     color: #fdce93;
     background-color: #3f3f3f;
     padding: 10px;
-    line-height: 1.2em;
+
     border-radius: 3px;
 }
 
@@ -473,4 +707,13 @@ table tbody > tr:nth-child(odd) > th {
 .codehilite .il {
     color: #8cd0d3
 }
+
+
+@media (max-width: 480px) {
+    code{
+        padding: 0;
+        margin: 0;
+    }
+}
+
 

@@ -8,8 +8,8 @@ html
 		title= post.title or site.title
 		+load('/template/basic.scss,/template/style.scss')
 	body
-		header#sidebar
-			figure#avatar
+		#sidebar
+			#avatar
 				a(href='/')
 					.border
 						.img_container
@@ -22,21 +22,22 @@ html
 				if has('images')
 					li
 						a(href="/album") Album
-				if has('about.md')
+					if not has('posts')
+						+redirect('/album')
+
+				pages = get_data(status='pages', type='post', limit=5, with_page=False, sort='position')
+				for page_p in pages
 					li
-						+a_with_selected("/about.md", 'About')
-				if has('links.md')
-					li
-						+a_with_selected("/links.md", 'Links')
+						+a_with_selected("/"+page_p.path, page_p.filename.split('.')[0].title())
 				.clear
 
-		section#main
-			header#banner
+		#main
+			#banner
 				block banner
 					span.date= now.format('%b,%d %Y')
 					span.sub_info today
 			block content
-			section#footer
+			#footer
 				| &copy; 2013 {{ site.title }}
 				| | Coded by <a href="http://sync.sh" target="_blank">YCF</a>
 				| | Inspired by <a href="https://svbtle.com/" target="_blank">Svbtle</a>

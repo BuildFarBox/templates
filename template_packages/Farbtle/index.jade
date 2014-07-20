@@ -2,7 +2,7 @@ extends base.jade
 block content
 	.posts
 		for post in posts
-			article
+			.post
 				h2.title
 					a(href=post.url)= post.title
 				.meta
@@ -10,7 +10,7 @@ block content
 				.content= post.content.limit(150)
 
 	if paginator.has_next or paginator.has_pre
-		nav.pager
+		.pager
 			if paginator.has_pre
 				a.pre(href=paginator.pre_page_url) Pre
 			if paginator.has_next

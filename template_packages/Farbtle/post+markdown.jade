@@ -3,6 +3,6 @@ block banner
 	h1.title= post.title
 	span.sub_info= post.date.format('%b,%d %Y')
 block content
-	article
+	.post
 		.content= post.content
 		include include/comments.jade
