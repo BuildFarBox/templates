@@ -1,11 +1,6 @@
 extends base
 block title
-	if tags
-		| {{ tags.join(',') }}
-	elif request.args.s
-		| {{ request.args.s }} | {{ site.title }}
-	else
-		| {{ site.title }}
+	title= request.args.s or tags.join('+') or site.title
 block content
 	{% from "include/macros.jade" import make_posts_list %}
 	.primary

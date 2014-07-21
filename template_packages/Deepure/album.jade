@@ -1,7 +1,7 @@
 extends base.jade
 
 block title
-	| {{ folder.title or 'Images' }}
+	title= folder.title or 'Images'
 
 block content
 	{% from "include/macros.jade" import make_pager %}
