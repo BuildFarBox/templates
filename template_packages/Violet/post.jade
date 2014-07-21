@@ -1,0 +1,31 @@
+extends base
+block title
+	title= post.title
+block content
+	.post.post_in_detail
+		.post_header
+			.common_width
+				h2.title= post.title
+				if post.tags
+					.tags
+						for tag in post.tags
+							a(href="/tag/{{tag}}")= '#'+tag
+				span.date Published on {{post.date.format('%Y-%m-%d')}}
+
+		.common_width
+			.post_body= post.content
+
+		.other_posts
+			.common_width
+				if pre_one
+					a.pre(href='{{pre_one.url}}#main')
+					 i.fa.fa-arrow-circle-left
+					 span= pre_one.title
+				if next_one
+					a.next(href='{{next_one.url}}#main')
+						span= next_one.title
+						i.fa.fa-arrow-circle-right
+				.clear
+	.comments_container
+		.common_width
+			include include/comments.jade

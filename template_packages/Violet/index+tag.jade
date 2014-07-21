@@ -1,0 +1,6 @@
+extends base
+block title
+	title= request.args.s or tags.join('+') or site.title
+
+block content
+	include include/posts_list

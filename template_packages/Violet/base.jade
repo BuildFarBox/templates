@@ -1,0 +1,45 @@
+html
+	head
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		meta(name="renderer", content="webkit")
+		meta(name="keywords", content=site.configs.keywords.escaped)
+		meta(name="description", content=site.raw_content.escaped)
+		block title
+			title= request.args.s or post.title or tags.join('+') or site.title
+		load('fonts /template/style/basic.scss /template/style/style.scss')
+	body
+		#body_wrapper
+			if site.configs.cover and has(site.configs.cover)
+				site_cover = site.configs.cover
+			else
+				site_cover = '/farbox_free_image.jpg'
+			#header.header(style="background-image: url({{site_cover}}?blur=true)")
+				.header_wrapper
+					h1.title
+						a(href='/')= site.title
+					ul.nav
+						li
+							a(href="/") Home
+						if has('images')
+							li
+								a(href='/album') Albums
+							if not has('posts')
+								+redirect('/album')
+						if has('posts')
+							li
+								a(href='/archive') Archive
+						pages = get_data(status='pages', type='post', limit=5, with_page=False, sort='position')
+						for page_p in pages
+							li
+								a(href="/{{page_p.path}}")= page_p.filename.split('.')[0].title()
+			#main
+				block content
+			#footer
+				.powered_by
+					a(href="https://www.farbox.com", target="_blank") Powered By FarBox.com
+				.designed_by
+					span Designed by
+					a(href="http://www.zhanxin.info/") zhanxin.lin

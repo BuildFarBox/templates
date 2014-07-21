@@ -1,0 +1,27 @@
+extends base
+
+block content
+
+	entries = get_data(type='post',limit=300, sort='desc').group('-date:year+month')
+	#archive.common_width
+		for key,posts in entries
+			l_index = loop.index
+			.archive_month
+				.h
+					h3= posts[0].date.format('%B %Y')
+					if posts.length == 1
+						span.count= '%s post'%posts.length
+					else
+						span.count= '%s posts'%posts.length
+				.set
+					for post in posts
+						a(href=post.url)
+							cover = post.cover or post.metadata.cover or '/farbox_free_image.jpg'
+							loop_key = '%s-%s' % (l_index, loop.index)
+							img(src='%s?width=240&height=120&fixed=true&index=%s'% (cover, loop_key))
+							.hover
+								span.date= post.date.format('%b %d,%Y')
+								span.title= post.title
+					.clear
+
+	include include/paginator.jade

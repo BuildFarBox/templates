@@ -1,0 +1,12 @@
+if paginator.has_pre or paginator.has_next
+	.clear
+	.pager.common_width
+		ul
+			for p in range(1, paginator.total_pages+1)
+				if paginator.page==p
+					li
+						a.current(href="javascript:void(0)")= p
+				else
+					li
+						a(href='/page/%s'%p)= p
+			.clear
