@@ -1,5 +1,5 @@
 Theme Name: Ink
-Original Author: Cyan Chen
-Original Author URI: http://cyanchen.com/
+Original Author: CHEN Yan
+Original Author URI: http://ccyann.com/
 Description: Chinese style named `墨`.
 License: MIT
