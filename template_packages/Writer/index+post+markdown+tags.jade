@@ -7,6 +7,8 @@ html
 					time(datetime=post.date.isoformat()) Published {{ post.date.format('%B %d, %Y') }}
 			.post-content
 				| {{ post.content }}
+				if request.path != '/' or request.path.startswith('/page/') or request.path.startswith('/tags/')
+						include include/comments
 				if post.tags
 					p.post-tags
 						span Tagged:
