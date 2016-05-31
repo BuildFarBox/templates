@@ -1,0 +1,16 @@
+doctype xml
++set_content_type('application/xml')
+rss(version="2.0")
+    channel
+        title= site.title
+        link(href="http://{{ request.host }}/")
+        description= site.configs.ps or site.configs.description or site.description
+        for post in posts
+            item
+                post_url = 'http://' + request.host + post.url.escaped
+                title= post.title.escaped
+                link(href=post_url, rel="alternate")
+                description(type="html")= post.content.escaped
+                pubDate= post.date.strftime('%Y-%m-%d %H:%M:%S')
+                guid=  post_url 
+                author=  site.configs.author or site.title 

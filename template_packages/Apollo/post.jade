@@ -1,0 +1,22 @@
+extends base
+// handle the request startwith /post
+if request.path.startswith('/post/')
+	post = get_doc(path2+'.md') or get_doc(path2+'.txt') or get_doc(path2+'.mk') or get_doc(path2+'.markdown') or get_doc(path2)
+
+block title
+	title= post.title + " - " + site.title
+block content
+	// i18n starts
+	+_('authtor_label', ' Post by %s')
+	+_('authtor_label', ' &nbsp;&nbsp;&nbsp;作者: %s', 'zh_cn')
+	// i18n ends
+
+	.post
+		article.post-block
+			h1.post-title= post.title
+		.post-time= post.date.format('%B %d, %Y') 
+		//- + (_('authtor_label') % (site.configs.author or site.title))
+		.post-content= post.content
+		include include/comments.jade
+
+	script

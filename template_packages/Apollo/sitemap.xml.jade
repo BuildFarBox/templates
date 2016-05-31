@@ -1,0 +1,58 @@
+doctype xml
+
+set_content_type('text/xml')
+date_format = "%Y-%m-%dT%H:%M:%S+00:00"
+posts = get_data(type="post", status=['public', 'secret'], limit=300)
+
+//
+    This is a XML sitemap file. Which is supported by many search engines like Google.
+    You can find more information about XML sitemap on `http://sitemaps.org`.
+
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    url
+        loc= "http://" + site.domain
+        lastmod
+            {{ posts[0].date.format(date_format) }}
+        changefreq weekly
+        priority 1.0
+
+    if has('posts')
+        url
+            loc= "http://" + site.domain + "/archive"
+            lastmod
+                {{ posts[0].date.format(date_format) }}
+            changefreq monthly
+            priority 1.0
+
+    if site.tags
+        url
+            loc= "http://" + site.domain + "/tags"
+            lastmod
+                {{ posts[0].date.format(date_format) }}
+            changefreq monthly
+            priority 1.0
+
+    about = get_doc('about.md') or get_doc('about.txt')
+    if about
+        url
+            loc= "http://" + site.domain + "/about"
+            lastmod
+                {{ about.date.format(date_format) }}
+            changefreq monthly
+            priority 1.0
+
+    for post in posts
+        url
+            loc= "http://" + site.domain + post.url
+            lastmod
+                {{ post.date.format(date_format) }}
+            changefreq monthly
+            priority 0.7
+
+    for tag in site.tags
+        url
+            loc= "http://" + site.domain + "/tag/" + tag[0]
+            lastmod
+                {{ posts[0].date.format(date_format) }}
+            changefreq monthly
+            priority 0.4

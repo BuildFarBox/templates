@@ -1,0 +1,9 @@
+extends base
+block title
+	title= _('CATEGORY')+' | ' + site.title
+block content
+	.archive
+		for category in  get_data(type='folder', level=[1,2], min_posts_count=1)
+			.post-item	
+				.post-time= '%s %s' % (category.posts_count, 'post' if category.posts_count==1 else 'posts')
+				a.post-title-link(href="/category/{{ category.path }}")= category.title

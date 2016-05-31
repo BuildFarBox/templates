@@ -1,0 +1,19 @@
+extends base
+{% from "mixins" import make_posts_list %}
+is_index = request.path.strip('/')=='tags'
+
+block title
+	title= " 标签 | " + site.title
+
+block content
+	if is_index
+		#categories:.pure-g
+			for tag_name, tag_count in site.tags
+				.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-2.pure-u-lg-1-3.pure-u-xl-1-4:.category
+					a(href="/tag/{{tag_name}}")
+						h3= tag_name
+						span= tag_count
+						//span= '%s %s' % (tag_count, 'post' if tag_count==1 else 'posts')
+
+
+

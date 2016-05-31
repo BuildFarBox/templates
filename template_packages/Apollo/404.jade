@@ -1,0 +1,30 @@
+extends base
+block title
+	title= " 404 | " + site.title
+block content
+	.detail-post
+		h1= '对不起，您访问的页面不存在。' if lang=='zh_cn' else 'Oops~, Page Not Found.'
+		.post_body
+			p= 	''
+				.search-bar
+					input(type="text", id='search-bar-2', placeholder="Search", value="", type="text",onkeyup="if (event.keyCode == 13) search2();"  )
+				
+				.center
+					//a(href="javascript:void(0);")
+					img(src="http://7lrxvd.com1.z0.glb.clouddn.com/wechat_qiancheng_gray.png", alt="微信扫一扫认识一个逗比痴狂代码猴")
+
+
+	script(type="text/javascript")
+		document.addEventListener("DOMContentLoaded", function(event) { 
+		  	var s = document.getElementById('search-bar-2');
+		   	if (s){s.focus();}				
+		});
+
+		function search2(){
+            if (document.getElementById('search-bar-2').value){
+                location.href='http://'+location.host+'?s='+document.getElementById('search-bar-2').value
+            }
+            else{
+                return false;
+            }
+        }

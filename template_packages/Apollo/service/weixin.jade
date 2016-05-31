@@ -1,0 +1,37 @@
+msg_type = request.xml.MsgType
+message = request.xml.Content or request.xml.Recognition or ''
+if message == '最近'
+    posts_to_push = get_data(type='post', limit=4, with_page=False)
+    if posts_to_push
+        +send_posts(posts_to_push)
+    else
+        +send_message('Oops, Can not find the post.')
+elif message in ['help', '帮助']
+    +send_message('帮助文档第一行\n\n帮助文档第二行。')
+elif message == 'time'
+    +set_var('record_time', True)
+    +send_message('设置成功，后续内容将记录时间戳；输入notime可以取消这个状态。')
+elif message in ['notime', 'no time']
+    +set_var('record_time', False)
+    +send_message('设置成功，后续内容不再记录时间戳。')
+elif message == 'today'
+    +set_var('post_path', '')
+    post_filename = now.format('%Y-%m-%d.txt')
+    +send_message('设置成功，内容将保存至 %s ' % post_filename)
+elif message.startswith('new ')
+    post_filename = message.replace('new ', '', 1) + '.txt'
+    +set_var('post_path', post_filename)
+    +send_message('设置成功，内容将保存至 %s ; 输入today可以重置。' % post_filename)
+else
+    if msg_type == 'image'
+        filename = '/_image/weixin/%s/%s.jpg' % (now.format('%Y-%m-%d'), request.xml.CreateTime)
+        +put(filename, from_url=request.xml.PicUrl)
+        message = '![Image](%s)' % filename
+    if message
+        if get_var('record_time')
+            message = '%s %s'%(now.format('%Y-%m-%d %H:%M:%S'), message)
+        post_filename = get_var('post_path') or now.format('%Y-%m-%d.txt')
+        +append(post_filename, message, lines=2, check=True)
+        +send_message('已保存到 '+post_filename)
+    else
+        +send_message('暂不支持的类型。')
