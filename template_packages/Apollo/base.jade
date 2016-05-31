@@ -1,0 +1,63 @@
+doctype html
+html
+	// i18n
+	+_('BLOG', '博客', 'zh_cn')
+	+_('Albums', '相册', 'zh_cn')
+	+_('CATEGORY', '分类', 'zh_cn')
+	+_('ARCHIVE', '归档', 'zh_cn')
+	+_('LINKS', '链接', 'zh_cn')
+	+_('RECENT', '最新文章', 'zh_cn')
+	+_('Recommand', '推荐', 'zh_cn')
+	+_('LAB', '实验室', 'zh_cn')
+	+_('Presentation', '演示', 'zh_cn')
+	+_('ABOUT', '关于', 'zh_cn')
+	+_('MORE', '阅读原文', 'zh_cn')
+	head
+		+mobile_meta()
+		meta(name="keywords", content=site.configs.keywords.escaped)
+		meta(name="description", content=site.raw_content.escaped)
+		meta(name="author", content=site.configs.author or site.title)
+		+load('jquery#1.10.2, /template/apollo.scss')
+	//-	+load('pure, jquery#1.10.2,/template/apollo.scss')
+		block title
+			title= request.args.s or post.title or tags.join('+') or category.title or site.title
+	body
+		header
+			.header
+				a(href="/",class="logo-link")
+					img(src="/favicon.png", data-pin-nopin="true")
+				span.site-title= site.title
+
+				ul(class="nav nav-list")
+					li(class="nav-list-item")
+						a(href="/", target="_self", class="nav-list-link")= _('BLOG')
+					li(class="nav-list-item")
+						a(href="/archive/", target="_blank", class="nav-list-link")= _('ARCHIVE')
+					li(class="nav-list-item")
+						a(href="/categories/", target="_blank", class="nav-list-link")= _('CATEGORY')
+					li(class="nav-list-item")
+						a(href="/about/", target="_blank", class="nav-list-link")= _('ABOUT')
+
+		section(class="container")
+			block content
+
+		#footer= '© 2016 '
+			a(href='/about', real="nofollow")= site.configs.author or site.title
+			.<p>
+			/
+			a(href='/archive', real="nofollow" , target="_blank")= "Archive"
+			/
+			a(href='/tags', real="nofollow" , target="_blank")= "Tags"
+			/
+			a(href='/categories', real="nofollow" , target="_blank")= "Categories"
+			//-/
+			//-a(href='/history', real="nofollow" , target="_blank")= "History"
+			if has('link.md')
+				/
+				a(href='/link.md', real="nofollow" , target="_blank")= "Links "
+			
+			/
+			a(href='/feed', real="nofollow" , target="_blank")= "RSS"
+
+		load('/template/js/scroller.js, /template/js/search.js')
+		

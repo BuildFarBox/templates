@@ -1,0 +1,11 @@
+extends base
+
+if request.path.startswith('/about')
+	post = get_doc('about.md') or get_doc('about.txt') or get_doc('about.mk') or get_doc('about.markdown')
+block title
+	title= _('ABOUT')+' | ' + site.title
+
+block content
+	.post
+		h1.post-title= post.title
+		.post-content= post.content

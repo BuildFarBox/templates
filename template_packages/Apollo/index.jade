@@ -1,0 +1,33 @@
+extends base
+block title
+    title= request.args.s or tags.join('+') or category.title or site.title
+block content
+    // i18n starts
+    +_('reading_label', 'currently reading articles under <b>%s</b>')
+    +_('reading_label', '正在查看 <b>%s</b> 下的文章', 'zh_cn')
+    +_('search_label', 'post contains <b>%s</b>  found below')
+    +_('search_label', '搜索包含 <b>%s</b>  的结果', 'zh_cn')
+    // i18n ends
+    if request.path.strip('/') == 'category'
+        +redirect('/categories')
+    if request.path.strip('/') == 'tag'
+        +redirect('/tags')
+
+
+    if tags or category
+        h1.label-title=  _('reading_label') % (request.args.s or tags.join('+') or category.title)
+    if request.args.s
+        h1.label-title= _('search_label') % request.args.s
+
+
+    ul(class="home post-list")
+        for post in posts
+            li.post-list-item
+                article.post-block
+                    h2.post-title
+                        a(href='/'+post.path,class="post-title-link")= _(post.title)
+                    .post-time= post.date.format('%B %d, %Y') 
+                    .post-content= post.content.limit(150, '...')
+                    a.read-more(href='/'+post.path)='>>'+ _('MORE') +' 🐒'
+
+    include include/paginator

@@ -1,0 +1,13 @@
+extends base
+// handle the request startwith any pages
+if request.path.startswith('/pages')
+	post = get_doc(path2+'.md') or get_doc(path2+'.txt') or get_doc(path2+'.mk') or get_doc(path2+'.markdown') or get_doc(path2+'')
+block title
+	title= post.title
+block content
+		.post
+		article.post-block
+			h1.post-title= post.title 
+		.post-time= post.date.format('%B %d, %Y') 
+		.post-content= post.content
+		include include/comments.jade

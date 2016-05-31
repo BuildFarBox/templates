@@ -1,0 +1,15 @@
+extends base
+block title
+	title= 'Albums - %s' % site.title
+block content
+	.main_container:#fb_photos.pure-g
+		for album in get_data(types='folder', min_images_count=1, level=1, limit=20)
+			.pure-u-1.pure-u-sm-1-2.pure-u-md-1-3.pure-u-lg-1-4
+				a(href='/album/{{album.path}}'):.img_container
+					img(src=album.url(width=640, height=426, fixed=True))
+					.info:.container:.pure-g
+						.img_title.pure-u-5-8= album.title
+						if album.images_count>1
+							.img_count.pure-u-3-8= '%s photos' % album.images_count
+						else
+							.img_count.pure-u-3-8= '%s photo' % album.images_count

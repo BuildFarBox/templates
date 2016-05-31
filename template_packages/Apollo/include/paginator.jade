@@ -1,0 +1,10 @@
++_('PREV', '上一页', 'zh_cn')
++_('NEXT', '下一页', 'zh_cn')
+if paginator.has_pre or paginator.has_next
+	footer
+		.paginator
+			if paginator.has_pre
+				a.prev(href=paginator.pre_url)= _('PREV')
+			if paginator.has_next
+				a.next(href=paginator.next_url)= _('NEXT')
+				
